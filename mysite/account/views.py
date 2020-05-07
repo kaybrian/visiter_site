@@ -64,6 +64,7 @@ def logoutuser(request):
     return redirect('account:loginpage')
 
 @login_required(login_url='account:loginpage')
-@allowed_user(allowed_roles=['vist'])
+@allowed_user(allowed_roles=['vist','admin'])
 def profile(request):
+
     return render(request,'account/profile.html')

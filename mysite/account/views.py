@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .models import Create_user_form
+from .models import Create_user_form,cust
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -49,6 +49,9 @@ def registation(request):
             username = form.cleaned_data.get('username')
             group = Group.objects.get(name='vist')
             user.groups.add(group)
+            cust.objects.create(
+                user=user,
+            )
             messages.success(request,"account was created for "+ username)
             return redirect('account:loginpage')
 

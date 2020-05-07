@@ -14,7 +14,7 @@ from django.contrib.auth.models import Group
 def index(request):
     return render(request,'account/index.html')
 
-
+@login_required(login_url='account:loginpage')
 @allowed_user(allowed_roles=['vist'])
 def userpage(request):
     context = {}
@@ -62,3 +62,8 @@ def registation(request):
 def logoutuser(request):
     logout(request)
     return redirect('account:loginpage')
+
+@login_required(login_url='account:loginpage')
+@allowed_user(allowed_roles=['vist'])
+def profile(request):
+    return render(request,'account/profile.html')

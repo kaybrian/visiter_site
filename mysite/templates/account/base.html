@@ -13,6 +13,24 @@
         .row {
             margin-top: 40px;
         }
+
+        #li {
+            text-align: center;
+            text-decoration: none;
+            background-color: aquamarine;
+            border-radius: 10px;
+            font-size: large;
+        }
+        #li a{
+            color:green;
+        }
+        #acount{
+            color: purple;
+            font-weight: bold;
+            font-size: larger;
+            text-align: center;
+            text-transform: capitalize;
+        }
     </style>
 </head>
 
@@ -37,7 +55,7 @@
                 {% endif %}
                 {% if request.user.is_active %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'account:profile' %}">Login </a>
+                    <a class="nav-link" href="{% url 'account:profile' %}">Profile </a>
                 </li>
                 {% endif %}
                 <li class="nav-item active">

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "account/base.html" %}
+{% load static %}
+
+{% block body_block %}
+<div class="jumbotron">
+    <p>Welcome to the login page </p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="usernmae" id="">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="">
+        </div>
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor%}
+
+        {{ form.errors }}
+        
+        <input type="submit" value="Login" class="btn btn-success">
+        <p>signup now : <a href="{% url 'account:registation' %}">Here ! </a></p>
+    </form>
+
+</div>
+
+{% endblock body_block %}

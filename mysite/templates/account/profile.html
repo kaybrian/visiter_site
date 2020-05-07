@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends "account/base.html" %}
+{% loads static %}
+
+{% block body_block %}
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <p><a href="{% url 'account:user' %}">Go home </a></p>
+                </div>
+                <div class="card-text">
+                    <img src="" class="img-fluid" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                    <input type="submit" value="Update Info ">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  
+{% endblock body_block %}

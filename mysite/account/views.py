@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .models import Create_user_form,Customers
+from .models import Create_user_form
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -49,9 +49,6 @@ def registation(request):
             username = form.cleaned_data.get('username')
             group = Group.objects.get(name='vist')
             user.groups.add(group)
-            Customers.objects.create(
-                user=user,
-            )
             messages.success(request,"account was created for "+ username)
             return redirect('account:loginpage')
 
@@ -64,7 +61,8 @@ def logoutuser(request):
     return redirect('account:loginpage')
 
 @login_required(login_url='account:loginpage')
-@allowed_user(allowed_roles=['vist','admin'])
+@allowed_user(allowed_roles=['vist'])
 def profile(request):
-
-    return render(request,'account/profile.html')
+    print(request.user.cust.profile_pic.url)
+    context= {}
+    return render(request,'account/profile.html',context)

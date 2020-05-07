@@ -9,11 +9,11 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <p  id='li'><a href="{% url 'account:user' %}">Go home </a></p>
+                    <p id='li'><a href="{% url 'account:user' %}">Go home </a></p>
                     <p id="acount">Account Settings </p>
                 </div>
                 <div class="card-text">
-                    <img src="" class="img-fluid" alt="" srcset="">
+                    <img src="{{request.user.cust.profile_pic.url}}" class="img-fluid" alt="" srcset="">
                 </div>
             </div>
         </div>
@@ -30,5 +30,5 @@
         </div>
     </div>
 </div>
-  
+
 {% endblock body_block %}

@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticate_user,allowed_user,admin_only
 from django.contrib.auth.models import Group
+from .forms import CustsForm
 # Create your views here.
 
 
@@ -66,6 +67,14 @@ def logoutuser(request):
 @login_required(login_url='account:loginpage')
 @allowed_user(allowed_roles=['vist'])
 def profile(request):
-    print(request.user.cust.profile_pic.url)
-    context= {}
-    return render(request,'account/profile.html',context)
+    custo = request.user.cust
+    form = CustsForm(instance=custo)
+
+
+    if request.method == 'POST':
+        form = CustsForm(request.POST, request.FILES, instance=custo)
+        if form.is_valid:
+            form.save()
+
+    context= {'form':form}
+    return render(request,'account/profile.html',context)  

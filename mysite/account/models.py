@@ -8,11 +8,13 @@ from django import forms
 class cust(models.Model):
     user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=50,null=True)
-    profile_pic = models.ImageField(null=True)
     phone = models.CharField(max_length=50,null=True)
- 
+    profile_pic = models.ImageField(null=True,default='profile.png')
+
+
     def __str__(self):
-        return self.name
+        return self.user.username
+ 
 
 class Create_user_form(UserCreationForm):
     class Meta:
